@@ -17,20 +17,16 @@ android {
 
     signingConfigs {
         good {
-            storeFile file("../antenne.store")
-            // storePassword System.console().readLine("\nPasswort für anntenne.store: ")
-            storePassword "antenne"
-            keyAlias "ktn"
-            // keyPassword System.console().readLine("\nPassword für alias \"ktn\": ")
-            keyPassword "antennektn"
+            storeFile file("./src/good/good.store")
+            storePassword "goodpass"
+            keyAlias "goodalias"
+            keyPassword "goodaliaspass"
         }
         evil {
-            storeFile file("../antenne.store")
-            // storePassword System.console().readLine("\nPasswort für anntenne.store: ")
-            storePassword "antenne"
-            keyAlias "stmk"
-            // keyPassword System.console().readLine("\nPassword für alias \"ktn\": ")
-            keyPassword "antennestmk"
+            storeFile file("./src/evil/evil.store")
+            storePassword "evilpass"
+            keyAlias "evilalias"
+            keyPassword "evilaliaspass"
         }
     }
 
