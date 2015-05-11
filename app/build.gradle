@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    // use this to change the APK base name from "app" to "brandingexample"
+    project.archivesBaseName = "brandingexample"
+
+    defaultConfig {
+        applicationId "com.github.davidmihola.brandingexampleproject"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        good {
+            storeFile file("../antenne.store")
+            // storePassword System.console().readLine("\nPasswort für anntenne.store: ")
+            storePassword "antenne"
+            keyAlias "ktn"
+            // keyPassword System.console().readLine("\nPassword für alias \"ktn\": ")
+            keyPassword "antennektn"
+        }
+        evil {
+            storeFile file("../antenne.store")
+            // storePassword System.console().readLine("\nPasswort für anntenne.store: ")
+            storePassword "antenne"
+            keyAlias "stmk"
+            // keyPassword System.console().readLine("\nPassword für alias \"ktn\": ")
+            keyPassword "antennestmk"
+        }
+    }
+
+    buildTypes {
+        // this part is default gradle config - you may want to enable proguard later
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        // the next part is not related to branding or productFlavors
+        // but it will give your APK files more sensible names:
+
+        // BTW: "all" is a method on Gradle's DomainObjectCollection
+        // in contrast to "each" it is also applied to items that are
+        // added to the collection _later_
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                String fileName = output.outputFile.name
+                        .replace("-release", "-release-v" + defaultConfig.versionName + "-vc" + defaultConfig.versionCode)
+                        .replace("-debug", "-debug-v" + defaultConfig.versionName + "-vc" + defaultConfig.versionCode)
+
+                output.outputFile = new File(output.outputFile.parent, fileName)
+            }
+        }
+    }
+
+    productFlavors {
+        // all flavors use the "main" source set
+        whitelabel {
+            applicationId "com.github.davidmihola.brandingexampleproject.whitelabel"
+        }
+
+        // additionally, this flavor uses the "good" source set (at src/good/*)
+        good {
+            applicationId "com.github.davidmihola.brandingexampleproject.good"
+            signingConfig signingConfigs.good
+        }
+
+        // additionally, this flavor uses the "evil" source set (at src/evil/*)
+        evil {
+            applicationId "com.github.davidmihola.brandingexampleproject.evi"
+            signingConfig signingConfigs.evil
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.1.0'
+
+    // Parse dependencies
+    // ATTENTION: Parse also need Parse*.jar in app/libs/
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+}

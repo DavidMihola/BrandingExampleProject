@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="branding_title">This is the white label version</string>
+    <string name="parse_app_id"></string>
+    <string name="parse_client_key"></string>
+</resources>

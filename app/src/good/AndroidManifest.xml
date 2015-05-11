@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+          IMPORTANT: Change "com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" in the lines below
+          to match your app's package name + ".permission.C2D_MESSAGE".
+        -->
+    <!--<permission android:protectionLevel="signature"-->
+    <!--android:name="com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" />-->
+    <!--<uses-permission android:name="com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" />-->
+    <permission
+        android:name="com.github.davidmihola.brandingexampleproject.good.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.github.davidmihola.brandingexampleproject.good.permission.C2D_MESSAGE" />
+    <!--END Parse Pushes-->
+
+    <application>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <!--
+                  IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name.
+                -->
+                <!--<category android:name="com.parse.tutorials.pushnotifications" />-->
+
+                <!--changed to at.antenne.androidapp-->
+                <category android:name="com.github.davidmihola.brandingexampleproject.good" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
