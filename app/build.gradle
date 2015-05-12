@@ -55,7 +55,12 @@ android {
     }
 
     productFlavors {
-        // all flavors use the "main" source set
+        // for each flavor the gradle uses the "main" source set AND
+        // the source set found in a folder of the same name as the flavor itself
+
+        // SO: all flavors use the "main" source set
+
+        // additionally, this flavor uses the "whitelabel" source set (at src/whitelabel/*)
         whitelabel {
             applicationId "com.github.davidmihola.brandingexampleproject.whitelabel"
         }
