@@ -30,6 +30,29 @@ These libraries both declare - and use - their own permissions in the manifest, 
 <uses-permission android:name="com.tailoredapps.permission.C2D_MESSAGE" />
 ```
 
-But since multiple that declare the same permision
-can not be installed on the same device at the same time, we need to move the declaration of these permissions to
+But since multiple apps that declare the same permision
+can not be installed on the same device at the same time (from Android L onwards), we need to move the declaration of these permissions to
 the AndroidManifest.xml in the product flavor.
+
+### How to build it?
+
+Building the different brandings works especially well with this setup:
+
+```
+In the project source directory (BrandingExampleProject):
+
+* to build one specific combination of build type (debug/release) and product flavor (good/evil):
+./gradlew assembleGoodDebug
+./gradlew assembleEvilRelease
+
+* to build all build types of one product flavor
+./gradlew assembleGood
+./gradlew assembleEvil
+
+* to build one build type for each product flavor
+./gradlew assembleDebug
+./gradlew assembleRelease
+
+* to build everything
+./gradlew assemble
+```
