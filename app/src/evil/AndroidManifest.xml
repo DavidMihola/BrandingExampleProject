@@ -24,6 +24,10 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name="com.github.davidmihola.brandingexampleproject.EvilSecondActivity"
+            android:label="@string/title_activity_evil_second"
+            >
+        </activity>
     </application>
 
 </manifest>

@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="second_activity_name">com.github.davidmihola.brandingexampleproject.DefaultSecondActivity</string>
+    <string name="title_activity_default_second">DefaultSecondActivity</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.github.davidmihola.brandingexampleproject;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,8 +16,22 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        findViewById(R.id.image)
+//                .setOnClickListener(new ToastClickListener(this));
         findViewById(R.id.image)
-                .setOnClickListener(new ToastClickListener(this));
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final String activityToLoad = getString(R.string.second_activity_name);
+                        try {
+                            final Class clazz = Class.forName(activityToLoad);
+                            final Intent intent = new Intent(MainActivity.this, clazz);
+                            startActivity(intent);
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
     @Override
