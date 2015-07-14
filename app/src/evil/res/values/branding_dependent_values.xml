@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="branding_title">This is the evil version</string>
-    <string name="parse_app_id"></string>
-    <string name="parse_client_key"></string>
+    <string name="parse_app_id">NDIRC9Jgn2RBsJ9HuiZumk4owMF4ekjzdxt3Ul7l</string>
+    <string name="parse_client_key">XC3SaxMW0bf46h8cHv2XO2aBXsE3FP9e7xnxWEq5</string>
     <string name="second_activity_name">com.github.davidmihola.brandingexampleproject.EvilSecondActivity</string>
 </resources>
